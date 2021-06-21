@@ -9,7 +9,7 @@ async function launchServer() {
     await fastify.register(swagger, {
         routePrefix: "/docs",
         openapi: {
-            openApi: "3.0.0",
+            openApi: "3.x.x",
             info: {
                 title: "swagger test",
                 description: "swagger client sdk test.",

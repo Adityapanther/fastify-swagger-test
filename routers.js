@@ -1,7 +1,7 @@
 const user = async function (fastify, opts) {
     fastify.get('/auth',{schema: {
         summary: "login or auth user to our server",
-        tags: [{name: "user"}],
+        tags: ["user"],
         headers: {
             type: "object",
             properties: {
@@ -73,7 +73,7 @@ const user = async function (fastify, opts) {
 
     fastify.get("/pageList",{ schema: {
         summary: "get user page List",
-        tags: [{name: "user"}],
+        tags: ["user"],
         headers: {
             type: "object",
             properties: {
