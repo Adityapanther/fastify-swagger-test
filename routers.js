@@ -39,6 +39,28 @@ const user = async function (fastify, opts) {
                         }
                     }
                 }
+            },
+            400: {
+                type: "object",
+                properties: {
+                    statusCode: {
+                        type: "number",
+                        default: 400
+                    },
+                    data: {
+                        type: "object",
+                        properties: {
+                            status: {
+                                type: "string",
+                                default: "error"
+                            },
+                            msg: {
+                                type: "string",
+                                default: "invalid auth token"
+                            }
+                        }
+                    }
+                }
             }
         }
     }}, async (req, res) => {
