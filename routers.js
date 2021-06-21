@@ -138,7 +138,7 @@ const user = async function (fastify, opts) {
                         properties: {
                             status: {
                                 type: "string",
-                                default: "success"
+                                default: "error"
                             },
                             msg: {
                                 type: "string",
