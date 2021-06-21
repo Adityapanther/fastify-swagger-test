@@ -49,8 +49,8 @@ const user = async function (fastify, opts) {
         } = req.headers;
 
         if (email === "123@gmail.com" && password === "12345") {
-            res.send({
-                satusCode: 200,
+            res.code(200).send({
+                statusCode: 200,
                 data: {
                     uid: 120,
                     authToken: "xmpp",
@@ -58,8 +58,8 @@ const user = async function (fastify, opts) {
                 }
             })
         } else {
-            res.send({
-                satusCode: 400,
+            res.code(400).send({
+                statusCode: 400,
                 data: {
                     status: "error",
                     msg: "user does not exits"
@@ -125,6 +125,28 @@ const user = async function (fastify, opts) {
                         }
                     }
                 }
+            },
+            400: {
+                type: "object",
+                properties: {
+                    statusCode: {
+                        type: "number",
+                        default: 400
+                    },
+                    data: {
+                        type: "object",
+                        properties: {
+                            status: {
+                                type: "string",
+                                default: "success"
+                            },
+                            msg: {
+                                type: "string",
+                                default: "invalid auth token"
+                            }
+                        }
+                    }
+                }
             }
         }
     }}, (req, res) => {
@@ -133,8 +155,8 @@ const user = async function (fastify, opts) {
         } = req.headers;
 
         if (authtoken === "xmpp") {
-            res.send({
-                satusCode: 200,
+            res.code(200).send({
+                statusCode: 200,
                 data: {
                     status: "success",
                     msg: "page list found",
@@ -152,7 +174,7 @@ const user = async function (fastify, opts) {
                 }
             })
         }else{
-            res.send({
+            res.code(400).send({
                 statusCode: 400,
                 data: {
                     status: "error",
